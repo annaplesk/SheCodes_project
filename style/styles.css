@@ -23,6 +23,11 @@ li {
 a {
   text-decoration: none;
 }
+
+small {
+  display: block;
+  text-align: center;
+}
 .weather-app {
   border: 1px solid #d7d7d7;
   padding: 20px;
