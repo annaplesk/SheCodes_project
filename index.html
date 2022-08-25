@@ -22,59 +22,64 @@
   </head>
   <body>
     <div class="container">
-      <div class="weather-app">
-        <form class="search" id="search-form">
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <form class="search" id="search-form">
+            <div class="row">
+              <div class="col-6">
+                <input
+                  id="search-line"
+                  type="search"
+                  placeholder="Search for city"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="Search"
+                  class="form-control btn btn-primary"
+                />
+              </div>
+              <div class="col-3">
+                <button
+                  class="btn btn-success w-100"
+                  id="current-location-button"
+                >
+                  Current
+                </button>
+              </div>
+            </div>
+          </form>
+          <h1></h1>
+          <ul>
+            <li id="date"></li>
+            <li id="weather-description"></li>
+          </ul>
           <div class="row">
             <div class="col-6">
-              <input
-                id="search-line"
-                type="search"
-                placeholder="Search for city"
-                class="form-control"
-              />
+              <span id="weather-icon"></span>
+              <span class="temperature" id="temp"> </span>
+              <span class="degree">°C</span>
             </div>
-            <div class="col-3">
-              <input
-                type="submit"
-                value="Search"
-                class="form-control btn btn-primary"
-              />
+            <div class="col-6">
+              <ul>
+                <li id="humidity">Humidity:</li>
+                <li id="wind">Wind:</li>
+              </ul>
             </div>
-            <div class="col-3">
-              <button
-                class="btn btn-success w-100"
-                id="current-location-button"
-              >
-                Current
-              </button>
-            </div>
-          </div>
-        </form>
-        <h1></h1>
-        <ul>
-          <li id="date"></li>
-          <li id="weather-description"></li>
-        </ul>
-        <div class="row">
-          <div class="col-6">
-            <span id="weather-icon"></span>
-            <span class="temperature" id="temp"> </span>
-            <span class="degree">°C</span>
-          </div>
-          <div class="col-6">
-            <ul>
-              <li id="humidity">Humidity:</li>
-              <li id="wind">Wind:</li>
-            </ul>
           </div>
         </div>
+        <small>
+          <a
+            href="https://github.com/annaplesk/SheCodes_project"
+            target="_blank"
+          >
+            Open source code
+          </a>
+          by Anna Pleskatsevych
+        </small>
       </div>
-      <small>
-        <a href="https://github.com/annaplesk/SheCodes_project" target="_blank">
-          Open source code
-        </a>
-        by Anna Pleskatsevych
-      </small>
     </div>
     <script src="js/script.js"></script>
   </body>
