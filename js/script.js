@@ -1,38 +1,41 @@
-let now = new Date();
-let currentDate = document.querySelector("#date");
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let min = date.getMinutes();
+  if (min < 10) {
+    min = `0${min}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
 
-let hour = now.getHours();
-if (hour < 10) {
-  hour = `0${hour}`;
+  return `${day} ${hour}:${min}`;
 }
-let min = now.getMinutes();
-if (min < 10) {
-  min = `0${min}`;
-}
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-currentDate.innerHTML = `${day}, ${hour}:${min}`;
 
 function showTemp(response) {
   let temp = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector("#temp");
-  currentTemp.innerHTML = temp;
   let h1 = document.querySelector("h1");
-  h1.innerHTML = response.data.name;
   let humidity = document.querySelector("#humidity");
-  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   let wind = document.querySelector("#wind");
-  wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
   let description = document.querySelector("#weather-description");
-  description.innerHTML = response.data.weather[0].main;
+  let date = document.querySelector("#date");
+  currentTemp.innerHTML = temp;
+  h1.innerHTML = response.data.name;
+  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
+  description.innerHTML = response.data.weather[0].description;
+  date.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function showPosition(position) {
