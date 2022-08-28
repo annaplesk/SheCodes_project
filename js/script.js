@@ -30,12 +30,18 @@ function showTemp(response) {
   let wind = document.querySelector("#wind");
   let description = document.querySelector("#weather-description");
   let date = document.querySelector("#date");
+  let icon = document.querySelector("#weather-icon");
   currentTemp.innerHTML = temp;
   h1.innerHTML = response.data.name;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
   description.innerHTML = response.data.weather[0].description;
   date.innerHTML = formatDate(response.data.dt * 1000);
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function showPosition(position) {
