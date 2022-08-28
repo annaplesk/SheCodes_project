@@ -70,6 +70,20 @@ a {
   top: -27px;
 }
 
+.active {
+  color: black;
+  cursor: default;
+}
+
+.active:hover {
+  text-decoration: none;
+}
+
+.fahrenheit-temp {
+  position: relative;
+  top: -27px;
+}
+
 .forecast {
   color: #707579;
   display: block;

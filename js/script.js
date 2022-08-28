@@ -23,7 +23,6 @@ function formatDate(timestamp) {
 }
 
 function showTemp(response) {
-  let temp = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector("#temp");
   let h1 = document.querySelector("h1");
   let humidity = document.querySelector("#humidity");
@@ -31,6 +30,10 @@ function showTemp(response) {
   let description = document.querySelector("#weather-description");
   let date = document.querySelector("#date");
   let icon = document.querySelector("#weather-icon");
+
+  celsiusTemp = response.data.main.temp;
+  let temp = Math.round(celsiusTemp);
+
   currentTemp.innerHTML = temp;
   h1.innerHTML = response.data.name;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
@@ -78,7 +81,35 @@ function searchCity(city) {
   axios.get(apiUrl).then(showTemp);
 }
 
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector("#temp");
+
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+
+  let fahrenheitTemp = celsiusTemp * 1.8 + 32.0;
+  currentTemp.innerHTML = Math.round(fahrenheitTemp);
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector("#temp");
+
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+
+  currentTemp.innerHTML = Math.round(celsiusTemp);
+}
+let celsiusTemp = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
 searchCity("New York");
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", showFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", showCelsiusTemp);

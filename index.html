@@ -32,6 +32,7 @@
                   type="search"
                   placeholder="Search for city"
                   class="form-control"
+                  autocomplete="off"
                 />
               </div>
               <div class="col-3">
@@ -58,9 +59,14 @@
           </ul>
           <div class="row">
             <div class="col-6">
-              <img src="" ; id="weather-icon" ; alt="" ; class="float-left" />
+              <img src="" ; id="weather-icon" ; alt="" ; />
               <span class="temperature" id="temp"> </span>
-              <span class="degree">°C</span>
+              <span class="degree">
+                <a href="#" id="celsius" class="active">C</a>° |</span
+              >
+              <span class="fahrenheit-temp" id="fahrenheit"
+                ><a href="#">F </a></span
+              >
             </div>
             <div class="col-6">
               <ul>
