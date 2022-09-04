@@ -48,6 +48,11 @@ function displayForecast() {
   forecast.innerHTML = forecastHTML;
 }
 
+function getCoordinates(coordinates) {
+  let key = "0450c0689074241f96d64430080fae72";
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${key}&units=metric`;
+  console.log(apiUrl);
+}
 function showTemp(response) {
   let currentTemp = document.querySelector("#temp");
   let h1 = document.querySelector("h1");
@@ -102,7 +107,7 @@ function search(event) {
 
 function searchCity(city) {
   let units = "metric";
-  let apiKey = "c95d60a1e3adbeb286133f1ebebc2579";
+  let apiKey = "0450c0689074241f96d64430080fae72";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemp);
 }
@@ -139,5 +144,3 @@ fahrenheitLink.addEventListener("click", showFahrenheitTemp);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", showCelsiusTemp);
-
-displayForecast();
