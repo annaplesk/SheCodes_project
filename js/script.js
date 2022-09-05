@@ -132,35 +132,7 @@ function searchCity(city) {
   axios.get(apiUrl).then(showTemp);
 }
 
-function showFahrenheitTemp(event) {
-  event.preventDefault();
-  let currentTemp = document.querySelector("#temp");
-
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-
-  let fahrenheitTemp = celsiusTemp * 1.8 + 32.0;
-  currentTemp.innerHTML = Math.round(fahrenheitTemp);
-}
-
-function showCelsiusTemp(event) {
-  event.preventDefault();
-  let currentTemp = document.querySelector("#temp");
-
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-
-  currentTemp.innerHTML = Math.round(celsiusTemp);
-}
-let celsiusTemp = null;
-
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
 searchCity("New York");
-
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", showFahrenheitTemp);
-
-let celsiusLink = document.querySelector("#celsius");
-celsiusLink.addEventListener("click", showCelsiusTemp);
